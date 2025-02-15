@@ -10,4 +10,7 @@ class Game:
         if self.mem == 0:
             return 0
 
-        return 20
+        if self.mem == 1:
+            return 20
+
+        return 40
