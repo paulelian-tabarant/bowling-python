@@ -27,3 +27,5 @@ class MyTestCase(unittest.TestCase):
             self.game.roll(3)
 
         self.assertEqual(5 + 5 + 3 + 18 * 3, self.game.score())
+
+    # TODO: add square notion
