@@ -26,9 +26,4 @@ class MyTestCase(unittest.TestCase):
         for i in range(18):
             self.game.roll(3)
 
-        self.assertEqual(5 + 5 + 3 + 18*3, self.game.score())
-
-
-
-if __name__ == '__main__':
-    unittest.main()
+        self.assertEqual(5 + 5 + 3 + 18 * 3, self.game.score())
