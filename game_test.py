@@ -11,6 +11,13 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual(0, game.score())
 
+    def test_adds_pins_from_each_roll(self):
+        game = Game()
+        for i in range(20):
+            game.roll(1)
+
+        self.assertEqual(20, game.score())
+
 
 if __name__ == '__main__':
     unittest.main()
