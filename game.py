@@ -1,10 +1,10 @@
 class Game:
     def __init__(self):
-        self.pins = 0
+        self.rolls = []
 
     def roll(self, param):
-        self.pins += param
+        self.rolls.append(param)
         pass
 
     def score(self):
-        return self.pins
+        return sum(self.rolls)
