@@ -17,7 +17,7 @@ class MyTestCase(unittest.TestCase):
         for roll in range(20):
             self.game.roll(3)
 
-        self.assertEqual(60, self.game.score())
+        self.assertEqual(20 * 3, self.game.score())
 
     def test_doubles_first_roll_of_next_square_when_a_spare_is_made(self):
         self.game.roll(5)
