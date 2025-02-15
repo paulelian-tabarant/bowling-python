@@ -4,7 +4,6 @@ class Game:
 
     def roll(self, param):
         self.rolls.append(param)
-        pass
 
     def score(self):
         score = 0
