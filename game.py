@@ -33,12 +33,15 @@ class Game:
 
     def strike_bonus_at(self, index):
         if self.frames[index + 1].is_strike():
-            return self.frames[index + 1].score() + self.frames[index + 2].first_roll
+            return self.nth_frame(index).score() + self.nth_frame(index + 1).first_roll
 
-        return self.frames[index + 1].score()
+        return self.nth_frame(index).score()
 
     def spare_bonus_at(self, index):
-        return self.frames[index + 1].first_roll
+        return self.nth_frame(index).first_roll
 
     def last_frame(self):
         return self.frames[-1]
+
+    def nth_frame(self, number):
+        return self.frames[number - 1]
