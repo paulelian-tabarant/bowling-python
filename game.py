@@ -23,23 +23,23 @@ class Game:
             frame = self.nth_frame(frame_number)
 
             if is_not_extra(frame_number) and frame.is_spare():
-                result += self.spare_bonus_at(frame_number - 1)
+                result += self.spare_bonus_at(frame_number)
 
             if is_not_extra(frame_number) and frame.is_strike():
-                result += self.strike_bonus_at(frame_number - 1)
+                result += self.strike_bonus_at(frame_number)
 
             result += frame.score()
 
         return result
 
     def strike_bonus_at(self, index):
-        if self.frames[index + 1].is_strike():
-            return self.nth_frame(index).score() + self.nth_frame(index + 1).first_roll
+        if self.frames[index].is_strike():
+            return self.nth_frame(index - 1).score() + self.nth_frame(index).first_roll
 
-        return self.nth_frame(index).score()
+        return self.nth_frame(index - 1).score()
 
     def spare_bonus_at(self, index):
-        return self.nth_frame(index).first_roll
+        return self.nth_frame(index - 1).first_roll
 
     def last_frame(self):
         return self.frames[-1]
