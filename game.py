@@ -1,8 +1,8 @@
 from frame import Frame
 
 
-def is_not_extra(frame_index):
-    return frame_index < 10
+def is_not_extra(frame_number):
+    return frame_number < 10
 
 
 class Game:
