@@ -1,3 +1,6 @@
+MAX_PINS = 10
+
+
 class Frame:
     def __init__(self):
         self.first_roll: int or None = None
@@ -18,4 +21,4 @@ class Frame:
         return self.first_roll + self.second_roll
 
     def is_spare(self):
-        return self.score() == 10
+        return self.score() == MAX_PINS
