@@ -58,6 +58,11 @@ class GameTest(unittest.TestCase):
 
         self.assertEqual(10 + 3 + 3, self.game.score())
 
+    def test_perfect_game(self):
+        self.rollTimes(12, 10)
+
+        self.assertEqual(300, self.game.score())
+
     def rollTimes(self, times, pins) -> None:
         for roll in range(times):
             self.game.roll(pins)

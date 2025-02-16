@@ -32,7 +32,13 @@ class Game:
                 result += self.frames[frame_index + 1].first_roll
 
             if frame.is_strike() and is_not_extra(frame_index):
-                result += self.frames[frame_index + 1].score()
+                next_frame = self.frames[frame_index + 1]
+                next_next_frame = self.frames[frame_index + 2]
+
+                if next_frame.is_strike():
+                    result += next_frame.score() + next_next_frame.first_roll
+                else:
+                    result += self.frames[frame_index + 1].score()
 
             result += self.frames[frame_index].score()
 
