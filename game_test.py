@@ -50,6 +50,14 @@ class GameTest(unittest.TestCase):
 
         self.assertEqual(5 + 5 + 3, self.game.score())
 
+    def test_gives_an_extra_two_rolls_on_the_11th_frame_when_a_strike_is_made_on_the_10th_frame(self):
+        self.rollTimes(18, 0)
+        self.game.roll(10)
+        self.game.roll(3)
+        self.game.roll(3)
+
+        self.assertEqual(10 + 3 + 3, self.game.score())
+
     def rollTimes(self, times, pins) -> None:
         for roll in range(times):
             self.game.roll(pins)
