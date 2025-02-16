@@ -16,3 +16,6 @@ class Frame:
 
     def score(self):
         return self.first_roll + self.second_roll
+
+    def is_spare(self):
+        return self.score() == 10
