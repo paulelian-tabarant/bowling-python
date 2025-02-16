@@ -15,10 +15,13 @@ class Frame:
             self.second_roll = pins_down
 
     def is_over(self):
-        return self.first_roll is not None and self.second_roll is not None
+        return (self.first_roll is not None and self.second_roll is not None) or self.first_roll == MAX_PINS
 
     def score(self):
+        if self.first_roll == MAX_PINS:
+            return MAX_PINS
+
         return self.first_roll + self.second_roll
 
     def is_spare(self):
-        return self.score() == MAX_PINS
+        return self.first_roll != MAX_PINS and self.score() == MAX_PINS

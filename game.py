@@ -19,6 +19,10 @@ class Game:
 
         for frame_index in range(len(self.frames)):
             frame = self.frames[frame_index]
+            print(frame.first_roll, frame.second_roll)
+
+        for frame_index in range(len(self.frames)):
+            frame = self.frames[frame_index]
 
             if frame.is_spare():
                 result += self.frames[frame_index + 1].first_roll

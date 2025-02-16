@@ -3,7 +3,7 @@ import unittest
 from game import Game
 
 
-class MyTestCase(unittest.TestCase):
+class GameTest(unittest.TestCase):
     def setUp(self):
         self.game = Game()
 
@@ -34,6 +34,13 @@ class MyTestCase(unittest.TestCase):
         self.rollTimes(16, 0)
 
         self.assertEqual(5 + 5 + 3 + 3, self.game.score())
+
+    def test_ends_the_frame_when_a_strike_is_made(self):
+        self.game.roll(10)
+
+        self.rollTimes(18, 1)
+
+        self.assertEqual(28, self.game.score())
 
     def rollTimes(self, times, pins) -> None:
         for roll in range(times):
