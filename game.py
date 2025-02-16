@@ -2,7 +2,7 @@ from frame import Frame
 
 
 def is_not_extra(frame_index):
-    return frame_index < 9
+    return frame_index < 10
 
 
 class Game:
@@ -19,13 +19,14 @@ class Game:
         result = 0
 
         for frame_index in range(len(self.frames)):
-            frame = self.nth_frame(frame_index + 1)
+            frame_number = frame_index + 1
+            frame = self.nth_frame(frame_number)
 
-            if is_not_extra(frame_index) and frame.is_spare():
-                result += self.spare_bonus_at(frame_index)
+            if is_not_extra(frame_number) and frame.is_spare():
+                result += self.spare_bonus_at(frame_number - 1)
 
-            if is_not_extra(frame_index) and frame.is_strike():
-                result += self.strike_bonus_at(frame_index)
+            if is_not_extra(frame_number) and frame.is_strike():
+                result += self.strike_bonus_at(frame_number - 1)
 
             result += frame.score()
 
