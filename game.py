@@ -15,36 +15,30 @@ class Game:
 
         self.last_frame().roll(pins_down)
 
-    def last_frame(self):
-        return self.frames[-1]
-
     def score(self):
         result = 0
-
-        # for frame_index in range(len(self.frames)):
-        #     frame = self.frames[frame_index]
-        #     print(frame.first_roll, frame.second_roll)
 
         for frame_index in range(len(self.frames)):
             frame = self.frames[frame_index]
 
-            if frame.is_spare() and is_not_extra(frame_index):
+            if is_not_extra(frame_index) and frame.is_spare():
                 result += self.spare_bonus_at(frame_index)
 
-            if frame.is_strike() and is_not_extra(frame_index):
-                bonus = self.strike_bonus_at(frame_index)
-
-                result += bonus
+            if is_not_extra(frame_index) and frame.is_strike():
+                result += self.strike_bonus_at(frame_index)
 
             result += self.frames[frame_index].score()
 
         return result
 
-    def strike_bonus_at(self, frame_index):
-        if self.frames[frame_index + 1].is_strike():
-            return self.frames[frame_index + 1].score() + self.frames[frame_index + 2].first_roll
+    def strike_bonus_at(self, index):
+        if self.frames[index + 1].is_strike():
+            return self.frames[index + 1].score() + self.frames[index + 2].first_roll
 
-        return self.frames[frame_index + 1].score()
+        return self.frames[index + 1].score()
 
-    def spare_bonus_at(self, frame_index):
-        return self.frames[frame_index + 1].first_roll
+    def spare_bonus_at(self, index):
+        return self.frames[index + 1].first_roll
+
+    def last_frame(self):
+        return self.frames[-1]
