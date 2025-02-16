@@ -19,7 +19,7 @@ class Game:
         result = 0
 
         for frame_index in range(len(self.frames)):
-            frame = self.frames[frame_index]
+            frame = self.nth_frame(frame_index + 1)
 
             if is_not_extra(frame_index) and frame.is_spare():
                 result += self.spare_bonus_at(frame_index)
@@ -27,7 +27,7 @@ class Game:
             if is_not_extra(frame_index) and frame.is_strike():
                 result += self.strike_bonus_at(frame_index)
 
-            result += self.frames[frame_index].score()
+            result += frame.score()
 
         return result
 
