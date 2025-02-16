@@ -32,16 +32,19 @@ class Game:
                 result += self.spare_bonus_at(frame_index)
 
             if frame.is_strike() and is_not_extra(frame_index):
-                bonus = self.frames[frame_index + 1].score()
-
-                if self.frames[frame_index + 1].is_strike():
-                    bonus = self.frames[frame_index + 1].score() + self.frames[frame_index + 2].first_roll
+                bonus = self.strike_bonus_at(frame_index)
 
                 result += bonus
 
             result += self.frames[frame_index].score()
 
         return result
+
+    def strike_bonus_at(self, frame_index):
+        if self.frames[frame_index + 1].is_strike():
+            return self.frames[frame_index + 1].score() + self.frames[frame_index + 2].first_roll
+
+        return self.frames[frame_index + 1].score()
 
     def spare_bonus_at(self, frame_index):
         return self.frames[frame_index + 1].first_roll
