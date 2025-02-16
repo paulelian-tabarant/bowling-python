@@ -29,17 +29,19 @@ class Game:
             frame = self.frames[frame_index]
 
             if frame.is_spare() and is_not_extra(frame_index):
-                result += self.frames[frame_index + 1].first_roll
+                result += self.spare_bonus_at(frame_index)
 
             if frame.is_strike() and is_not_extra(frame_index):
-                next_frame = self.frames[frame_index + 1]
-                next_next_frame = self.frames[frame_index + 2]
+                bonus = self.frames[frame_index + 1].score()
 
-                if next_frame.is_strike():
-                    result += next_frame.score() + next_next_frame.first_roll
-                else:
-                    result += self.frames[frame_index + 1].score()
+                if self.frames[frame_index + 1].is_strike():
+                    bonus = self.frames[frame_index + 1].score() + self.frames[frame_index + 2].first_roll
+
+                result += bonus
 
             result += self.frames[frame_index].score()
 
         return result
+
+    def spare_bonus_at(self, frame_index):
+        return self.frames[frame_index + 1].first_roll
