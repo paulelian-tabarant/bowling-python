@@ -10,11 +10,13 @@ class Game:
     def score(self):
         score = 0
 
-        for roll in range(len(self.rolls)):
+        for frame in range (len(self.rolls) // 2):
+            first_roll = frame * 2
+            second_roll = first_roll + 1
 
-            if roll < len(self.rolls) - 2 and self.rolls[roll] + self.rolls[roll + 1] == MAX_PINS:
-                score += self.rolls[roll + 2]
+            if self.rolls[first_roll] + self.rolls[second_roll] == MAX_PINS:
+                score += self.rolls[second_roll + 1]
 
-            score += self.rolls[roll]
+            score += self.rolls[first_roll] + self.rolls[second_roll]
 
         return score

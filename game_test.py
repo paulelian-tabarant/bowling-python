@@ -28,4 +28,10 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual(5 + 5 + 3 + 18 * 3, self.game.score())
 
-    # TODO: add square notion
+    def test_does_not_consider_ten_pins_on_two_adjacent_frames_as_a_spare(self):
+        self.game.roll(3)
+        self.game.roll(5)
+        self.game.roll(5)
+        self.game.roll(3)
+
+        self.assertEqual(5 + 5 + 3 + 3, self.game.score())
