@@ -24,7 +24,7 @@ class Frame:
         if self.is_strike():
             return MAX_PINS
 
-        return self.first_roll + self.second_roll
+        return self.first_roll + self.second_roll if self.second_roll is not None else self.first_roll
 
     def is_spare(self):
         return self.first_roll != MAX_PINS and self.score() == MAX_PINS
