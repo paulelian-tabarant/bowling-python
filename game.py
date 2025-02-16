@@ -18,8 +18,7 @@ class Game:
     def score(self):
         result = 0
 
-        for frame_index in range(len(self.frames)):
-            frame_number = frame_index + 1
+        for frame_number in range(1, len(self.frames) + 1):
             frame = self.nth_frame(frame_number)
 
             if is_not_extra(frame_number) and frame.is_spare():
