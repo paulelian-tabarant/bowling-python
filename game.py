@@ -4,9 +4,20 @@ MAX_PINS = 10
 class Game:
     def __init__(self):
         self.rolls = []
+        self.frames = [(None, None)]
 
     def roll(self, param):
         self.rolls.append(param)
+
+        (first_roll, second_roll) = self.frames[-1]
+
+        if first_roll is not None and second_roll is not None:
+            self.frames.append((None, None))
+
+        if (first_roll is not None) and (first_roll != MAX_PINS):
+            self.frames[-1] = (first_roll, param)
+
+        self.frames.append((None, None))
 
     def score(self):
         score = 0
